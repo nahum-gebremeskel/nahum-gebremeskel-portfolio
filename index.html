@@ -1,58 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-
+<html lang="en"><head>
+    <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Nahum Gebremeskel – Portfolio</title>
-    <meta name="description" content="Selected case studies with outcomes, stacks, and links to repos." />
+    <meta name="description" content="Selected case studies with outcomes, stacks, and repository links." />
     <link rel="canonical" href="https://nahum-gebremeskel.github.io/nahum-gebremeskel-portfolio/" />
     <meta property="og:title" content="Nahum Gebremeskel – Portfolio" />
-    <meta property="og:description" content="Selected case studies with outcomes, stacks, and links to repos." />
+    <meta property="og:description" content="Selected case studies with outcomes, stacks, and repository links." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://nahum-gebremeskel.github.io/nahum-gebremeskel-portfolio/" />
     <meta property="og:image" content="https://nahum-gebremeskel.github.io/nahum-gebremeskel-portfolio/assets/og.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="./styles.css" />
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Nahum Gebremeskel", "url": "https://nahum-gebremeskel.github.io/nahum-gebremeskel-portfolio/", "email": "mailto:nahum.gebremeskel.dev@gmail.com", "sameAs": ["https://www.linkedin.com/in/nahum-gebremeskel/", "https://github.com/nahum-gebremeskel"], "homeLocation": {"@type": "Place", "name": "Seattle, WA, USA"}}</script>
     <script>(function(){
-  const root = document.documentElement;
-  const key='theme';
-  const stored = localStorage.getItem(key);
+  const root=document.documentElement,key='theme',stored=localStorage.getItem(key);
   if(stored){ root.classList.toggle('dark', stored==='dark'); }
-  function setTheme(mode){ localStorage.setItem(key, mode); root.classList.toggle('dark', mode==='dark'); }
-  window.toggleTheme = function(){ setTheme(root.classList.contains('dark') ? 'light' : 'dark'); };
-})();</script>
-    <script>(function(){
+  window.toggleTheme=()=>{ const dark=root.classList.contains('dark'); localStorage.setItem(key,dark?'light':'dark'); root.classList.toggle('dark',!dark); };
+  const header=document.querySelector('header.site-header');
+  window.addEventListener('scroll',()=>{ if(window.scrollY>4) header.classList.add('elevate'); else header.classList.remove('elevate'); },{passive:true});
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
-    a.addEventListener('click', e=>{
-      const id=a.getAttribute('href').slice(1);
-      const el=document.getElementById(id);
-      if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+    a.addEventListener('click',e=>{ const id=a.getAttribute('href').slice(1),el=document.getElementById(id);
+      if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth',block:'start'}); } });
+  });
+  document.querySelectorAll('[data-copy]').forEach(btn=>{
+    btn.addEventListener('click',()=>{ const t=btn.getAttribute('data-copy');
+      navigator.clipboard.writeText(t).then(()=>{ const p=btn.textContent; btn.textContent='Copied!'; setTimeout(()=>btn.textContent=p,1200); });
     });
   });
-  const copyBtns = document.querySelectorAll('[data-copy]');
-  copyBtns.forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const text = btn.getAttribute('data-copy');
-      navigator.clipboard.writeText(text).then(()=>{
-        const prev = btn.textContent;
-        btn.textContent='Copied!';
-        setTimeout(()=>btn.textContent=prev,1200);
-      });
-    });
-  });
+  const toTop=document.getElementById('toTop');
+  if(toTop){ window.addEventListener('scroll',()=>{ toTop.classList.toggle('show', window.scrollY>600); },{passive:true}); }
 })();</script>
     
-</head>
-<body>
+</head><body>
 
     <header class="site-header">
       <a class="skip-link" href="#main">Skip to content</a>
       <div class="container nav">
         <div class="brand"><span class="brand-logo" aria-hidden="true"></span><span>Nahum Gebremeskel</span></div>
-        <nav aria-label="Primary navigation"><a href="https://nahum-gebremeskel.github.io/nahum-gebremeskel-developer/" >About</a> <a href="https://nahum-gebremeskel.github.io/nahum-gebremeskel-portfolio/" aria-current="page">Portfolio</a> <a href="https://nahum-gebremeskel.github.io/nahum-gebremeskel-projects/" >Projects</a> <a href="https://nahum-gebremeskel.github.io/nahum-gebremeskel-cv/" >CV</a>
+        <nav aria-label="Primary navigation"><a href="https://nahum-gebremeskel.github.io/nahum-gebremeskel-developer/" >About</a> <a href="https://nahum-gebremeskel.github.io/nahum-gebremeskel-portfolio/" aria-current="page">Portfolio</a> <a href="https://nahum-gebremeskel.github.io/nahum-gebremeskel-projects/" >Projects</a> <a href="https://nahum-gebremeskel.github.io/nahum-gebremeskel-cv/" >CV</a> <a href="https://nahum-gebremeskel.github.io/nahum-gebremeskel-developer/now.html" >Now</a>
           <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">🌓</button>
         </nav>
       </div>
@@ -60,47 +48,11 @@
     
 <main id="main" class="container">
   <section class="hero center">
-    <h1>Selected work</h1>
-    <p class="muted">Outcomes, tech stacks, and what I learned.</p>
-    <div class="cta">
-      <a class="btn pill" href="https://nahum-gebremeskel.github.io/nahum-gebremeskel-developer/">About</a>
-      <a class="btn pill" href="https://nahum-gebremeskel.github.io/nahum-gebremeskel-projects/">Projects</a>
-      <a class="btn primary pill" href="https://nahum-gebremeskel.github.io/nahum-gebremeskel-cv/">CV</a>
-    </div>
+    <h1>Portfolio</h1>
+    <p class="muted">Selected case studies with outcomes, stacks, and repository links.</p>
   </section>
-
-  <section class="block">
-    <div class="cards">
-      <article class="card center" aria-labelledby="case1">
-        <h2 id="case1">SaaS Analytics Dashboard</h2>
-        <p class="muted">React • TypeScript • Node • Postgres</p>
-        <ul class="center" style="list-style:none;padding:0">
-          <li>12% conversion lift by simplifying funnel views and caching queries.</li>
-          <li>Core Web Vitals: LCP 1.8s, CLS 0.02 after image optimizations.</li>
-        </ul>
-        <p><a class="btn pill" href="https://github.com/nahum-gebremeskel/saas-analytics">Repository</a></p>
-      </article>
-
-      <article class="card center" aria-labelledby="case2">
-        <h2 id="case2">Serverless Image Pipeline</h2>
-        <p class="muted">AWS Lambda • S3 • CloudFront</p>
-        <ul class="center" style="list-style:none;padding:0">
-          <li>~40% latency reduction for media endpoints with on‑the‑fly transforms.</li>
-          <li>Costs reduced by 25% using tiered caching and compressed formats.</li>
-        </ul>
-        <p><a class="btn pill" href="https://github.com/nahum-gebremeskel/image-pipeline">Repository</a></p>
-      </article>
-
-      <article class="card center" aria-labelledby="case3">
-        <h2 id="case3">Open Source UI Kit</h2>
-        <p class="muted">Design System • Storybook</p>
-        <ul class="center" style="list-style:none;padding:0">
-          <li>Built typed components with theming and accessibility baked in.</li>
-          <li>Shipped Storybook docs and visual regression tests (Chromatic).</li>
-        </ul>
-        <p><a class="btn pill" href="https://github.com/nahum-gebremeskel/ui-kit">Repository</a></p>
-      </article>
-    </div>
+  <section class="block center">
+    <p>Visit the <a href="https://nahum-gebremeskel.github.io/nahum-gebremeskel-developer/now.html">Now page</a> to see what I’m focused on.</p>
   </section>
 </main>
 
@@ -115,7 +67,7 @@
         <p class="center">© <span id="year"></span> Nahum Gebremeskel • Seattle, WA</p>
       </div>
       <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+      <button id="toTop" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="Back to top">↑ Top</button>
     </footer>
     
-</body>
-</html>
+</body></html>
