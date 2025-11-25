@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://nahum-gebremeskel.github.io/nahum-gebremeskel-portfolio/sitemap.xml
